@@ -14,8 +14,8 @@ implementation pull requests.
 - ASP.NET Core runtime `11.0.0-rc.1.26425.128`
 - Blazor Web App with a static SSR TempData page
 - Windows 11 24H2 x64
-- Google Chrome 153
-- Visual Studio Code 1.137.0
+- Google Chrome 153.0.8010.48 (Official Build, 64-bit)
+- Visual Studio Code 1.138.0
 
 The required SDK is selected by [global.json](global.json).
 
