@@ -1,0 +1,47 @@
+@page "/tempdata-cookie"
+@inject NavigationManager NavigationManager
+
+<PageTitle>TempData cookie validation</PageTitle>
+
+<h1>TempData cookie validation</h1>
+
+<p id="result">@(message is null ? "No message" : $"Received {message.Length} characters; match: {message == CreatePayload(ExpectedSize)}")</p>
+
+<form method="post" @formname="WriteTempData" @onsubmit="WriteAndRedirect">
+    <AntiforgeryToken />
+    <label for="size">Payload size</label>
+    <input id="size" name="size" type="number" min="1" max="12000" placeholder="64" @bind="PayloadSize" />
+    <button type="submit">Write and redirect</button>
+</form>
+
+@code {
+    private const string TempDataKey = "ValidationMessage";
+    private string? message;
+
+    [CascadingParameter]
+    public ITempData? TempData { get; set; }
+
+    [SupplyParameterFromForm(Name = "size", FormName = "WriteTempData")]
+    public int? PayloadSize { get; set; }
+
+    [SupplyParameterFromQuery(Name = "size")]
+    public int ExpectedSize { get; set; }
+
+    protected override void OnInitialized()
+    {
+        message = TempData?.Get(TempDataKey) as string;
+    }
+
+    private void WriteAndRedirect()
+    {
+        var size = Math.Clamp(PayloadSize ?? 64, 1, 12000);
+        TempData![TempDataKey] = CreatePayload(size);
+        NavigationManager.NavigateTo($"tempdata-cookie?size={size}", forceLoad: true);
+    }
+
+    private static string CreatePayload(int size)
+    {
+        const string marker = "TEMPDATA-VALIDATION-";
+        return string.Concat(Enumerable.Repeat(marker, (size + marker.Length - 1) / marker.Length))[..size];
+    }
+}
