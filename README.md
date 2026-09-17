@@ -86,8 +86,6 @@ All required feature behavior checks passed.
 
 ## Results and Evidence
 
-- [Completed test report](Evidence/TestCasesAndOutput/TEST-REPORT.md)
-- [Detailed manual test guide](Evidence/TestCasesAndOutput/TEST-GUIDE.md)
 - [Test evidence](Evidence/TestCasesAndOutput)
 - [Build evidence](Evidence/Build)
 
