@@ -86,11 +86,8 @@ All required feature behavior checks passed.
 
 ## Results and Evidence
 
-- [Test evidence](Evidence/TestCasesAndOutput)
+- [Completed test report](Evidence/TempDataCookieValidationReport.docx)
 - [Build evidence](Evidence/Build)
-
-Protected cookie values must be redacted before evidence is published. Preserve
-the cookie name, encoded length, and all attributes in redacted captures.
 
 ## Identified Issue
 
