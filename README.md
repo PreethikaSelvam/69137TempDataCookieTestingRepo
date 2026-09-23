@@ -89,12 +89,8 @@ All required feature behavior checks passed.
 - [Completed test report](Evidence/TempDataCookieValidationReport.docx)
 - [Build evidence](Evidence/Build)
 
-## Identified Issue
+## Identified Documentation Issue
 
-The .NET 11 Blazor state-management documentation states
-`SameSiteMode.Strict` for the TempData cookie, while the tested default responses
-consistently emitted `SameSite=Lax` without explicit SameSite configuration.
+The .NET 11 Blazor state-management documentation states `SameSiteMode.Strict` for the TempData cookie, while the tested default responses consistently emitted `SameSite=Lax` without explicit SameSite configuration. This is a documentation bug, not a TempData runtime bug.
 
-The documentation describes the 4 KB browser cookie limit, automatic chunking,
-and Data Protection encryption, but doesn't state the recovery behavior when a
-cookie can't be decrypted.
+The documentation describes the 4 KB browser cookie limit, automatic chunking, and Data Protection encryption, but doesn't state the recovery behavior when a cookie can't be decrypted.
